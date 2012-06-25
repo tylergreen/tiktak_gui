@@ -3,6 +3,29 @@
 #
 # For more information see: http://limelightwiki.8thlight.com/index.php/A_Cook%27s_Tour_of_Limelight#PropBuilder_DSL
 
-root :text => "This is the Default Scene scene."
+# root :text => "This is the Default Scene scene."
 
-board
+message_bar :text => "message bar"
+
+display :id => "display", :text => "click a cell"
+
+board {
+  (0...9).each { |pos| cell :id => pos }
+}
+
+player_x {
+  x_name :text => "Player X"
+  x_wins :text => "wins: "
+} 
+
+
+player_o {
+  o_name :text => "Player O"
+  o_wins :text => "wins: "
+}
+
+
+
+ties_counter
+
+new_game_button

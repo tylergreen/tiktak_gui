@@ -12,8 +12,77 @@ default_scene {
   height "100%"
 }
 
-root {
+message_bar {
+  width "100%"
+  vertical_alignment :top
+  horizontal_alignment :center
   text_color :white
   font_size 18
 }
 
+board {
+  width "60%"
+  height "60%"
+  background_color :green
+  vertical_alignment :center
+  horizontal_alignment :center
+
+}
+
+cell {
+  width "33%"
+  height "33%"
+  background_color :blue
+  vertical_alignment :center
+  horizontal_alignment :center
+  margin 5
+}
+
+player_x {
+  width "50%"
+  horizontal_alignment :left
+  text_color :white
+  font_size 20
+}
+
+player_o {
+    width "50%"
+    horizontal_alignment :right
+    text_color :white
+    font_size 20
+}
+
+x_name {
+  width "100%"
+  horizontal_alignment :center
+  text_color :white
+  font_size 20
+} 
+
+x_wins {
+  width "100%"
+    horizontal_alignment :center
+    text_color :white
+    font_size 20
+} 
+
+o_name {
+  width "100%"
+  horizontal_alignment :center
+  text_color :white
+  font_size 20
+} 
+
+o_wins {
+  width "100%"
+  horizontal_alignment :center
+  text_color :white
+  font_size 20
+}
+
+display {
+  width "100%"
+  horizontal_alignment :center
+  text_color :white
+  font_size 20
+}
