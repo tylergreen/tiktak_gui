@@ -1,21 +1,18 @@
-module Cell
+module NewGameButton
 
-  attr_accessor :display
-  attr_reader :last_click
-    
+
+  attr_accessor :cells1
+  
   def self.extended(prop)
-    prop.display = prop.scene.find("display")
+    cells1 = prop.scene.find("1")
   end
 
   def mouse_clicked(e)
-    last_click = id
-    display.text = " you clicked #{id}"
+#    last_click = id
+#    display.text = " you clicked #{id}"
+    cells1.mark("T")
   end
 
-  def mark(marker)
-    self.text = marker
-  end
-    
     #s = TCPSocket.new 'localhost', 2000
     #s.puts "clicked: #{ id }"
     #response = s.gets

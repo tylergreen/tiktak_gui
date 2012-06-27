@@ -10,7 +10,7 @@ message_bar :text => "message bar"
 display :id => "display", :text => "click a cell"
 
 board {
-  (0...9).each { |pos| cell :id => pos }
+  (0...9).each { |pos| cell :id => "cell_#{pos}", :text => "" }
 }
 
 player_x {
@@ -24,8 +24,6 @@ player_o {
   o_wins :text => "wins: "
 }
 
-
-
 ties_counter
 
-new_game_button
+new_game_button :text => "new game"

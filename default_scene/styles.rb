@@ -36,6 +36,8 @@ cell {
   vertical_alignment :center
   horizontal_alignment :center
   margin 5
+  text_color :white
+  font_size 100
 }
 
 player_x {
@@ -86,3 +88,11 @@ display {
   text_color :white
   font_size 20
 }
+
+new_game_button {
+  height 50
+  width 50
+  background_color :red
+  rounded_corner_radius 10
+}
+
