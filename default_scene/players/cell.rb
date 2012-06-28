@@ -12,7 +12,6 @@ module Cell
       production.last_click = id.split('_')[1] # depends on the cell id
       production.waiting_for_move = false
     end
-    display.text = " you clicked #{id}"
   end
 
   def mark(marker)

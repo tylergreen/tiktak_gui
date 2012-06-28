@@ -42,11 +42,7 @@ module DefaultScene
   # takes in array reprentation of board
   def display_new_board(board_array)
     board_array.each_with_index do |marker, pos|
-      if marker == "empty"
-        
-        find("cell_#{pos}").mark(marker) unless marker == "empty"
-      end
-      
+      find("cell_#{pos}").mark(marker)
     end
   end
 

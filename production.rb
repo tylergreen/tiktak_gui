@@ -27,12 +27,19 @@ module Production
 #  # Hook #2.  Called after internal gems have been loaded and stages have been instantiated, yet before
 #  # any scenes have been opened.
   require 'socket'
-  attr_accessor :server, :last_click, :waiting_for_move
+  attr_accessor :server, :last_click, :waiting_for_move, :backend
 
   def production_loaded
     @server = TCPServer.new 'localhost', 9010
     @last_click = nil
     @waiting_for_move = false
+    @backend = Thread.new do
+      puts "starting backend..."
+      %x[cd /Users/jorge/cs/ruby/tiktak/
+ /Users/jorge/.rvm/gems/ruby-1.9.3-p125@global/bin/rake gui ] 
+    end
+
+
 
   end
 #
