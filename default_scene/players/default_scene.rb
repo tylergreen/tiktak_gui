@@ -7,7 +7,9 @@ module DefaultScene
   end
 
   def listen
+    display = find("display")
     loop do
+      display.text = "waiting for message"
       client = production.server.accept
       message = client.gets
       begin
@@ -16,13 +18,19 @@ module DefaultScene
         puts "could not parse message #{message}"
         next
       end
-      case request.first
-      when "get_move"
-        client.puts "click Dummy"   # needs to have some contract with tcp_player
-      when "show_new_board"
-        display = find("display")
+      case request['command']
+      when 'get_move'
+        display.text = "waiting for input"
+        # start listening for next click
+        production.last_click = nil
+        production.waiting_for_move = true
+        while production.last_click.nil?
+          sleep(1)
+        end
+        client.puts production.last_click
+      when 'show_new_board'
         display.text = "request to update board"
-        display_new_board(extract_board(request)) # contract with tiktak
+        display_new_board(request['board']) # contract with tiktak
         client.puts("ok")
       else
         client.puts "unknown request: #{ request }"
@@ -34,14 +42,15 @@ module DefaultScene
   # takes in array reprentation of board
   def display_new_board(board_array)
     board_array.each_with_index do |marker, pos|
-      find("cell_#{pos}").mark(marker) unless marker == "empty"
+      if marker == "empty"
+        
+        find("cell_#{pos}").mark(marker) unless marker == "empty"
+      end
+      
     end
   end
 
   def scene_opened(e)
-    display = find("display")
-    raise "no display" if display.nil?
-    display.text = "Opened!"
     listen
   end
   
