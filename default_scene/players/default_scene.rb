@@ -2,10 +2,6 @@ require 'socket'
 
 module DefaultScene
 
-  def extract_board(request)
-    request[1]
-  end
-
   def listen
     display = find("display")
     loop do
@@ -32,6 +28,12 @@ module DefaultScene
         display.text = "request to update board"
         display_new_board(request['board']) # contract with tiktak
         client.puts("ok")
+      when 'game_over'
+        result = request['result']
+        display.text = "Game over: #{result}"
+        # kill the backend process
+        # show the result
+        break
       else
         client.puts "unknown request: #{ request }"
         puts "unknown request: #{ request }"
