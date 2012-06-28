@@ -19,9 +19,10 @@ module Production
 #
 #  # Hook #1.  Called when the production is newly created, before any loading has been done.
 #  # This is a good place to require needed files and instantiate objects in the business layer.
-#  def production_opening
-#    require 'tiktak'
-#  end
+  def production_opening
+    require 'rubygems'
+    require 'json'
+  end
 #
 #  # Hook #2.  Called after internal gems have been loaded and stages have been instantiated, yet before
 #  # any scenes have been opened.
