@@ -4,8 +4,8 @@ module DefaultScene
 
   def listen
     production.backend_process = Thread.new do
-      %x[cd /Users/jorge/cs/ruby/tiktak/
- /Users/jorge/.rvm/gems/ruby-1.9.3-p125@global/bin/rake gui ] 
+      %x(cd /Users/jorge/cs/ruby/tiktak/
+ /Users/jorge/.rvm/gems/ruby-1.9.3-p125@global/bin/rake gui[#{production.player1.to_sym},#{production.player2.to_sym}] )
     end
 
     Thread.new do

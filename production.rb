@@ -27,13 +27,15 @@ module Production
 #  # Hook #2.  Called after internal gems have been loaded and stages have been instantiated, yet before
 #  # any scenes have been opened.
   require 'socket'
-  attr_accessor :server, :client, :backend_process, :waiting_for_move, :listener
+  attr_accessor :server, :client, :backend_process, :waiting_for_move, :listener, :player1, :player2
 
   def production_loaded
     @server = TCPServer.new 'localhost', 9010
     @client = nil
     @listener = nil
     @waiting_for_move = false
+    @player1 = :human
+    @player2 = :human
   end
 #
 #  # Hook #3.  Called when the production, and all the scenes, have fully opened.
