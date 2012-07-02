@@ -1,35 +1,18 @@
 module Cell
 
-  attr_accessor :display
-  attr_reader :last_click
-    
-  def self.extended(prop)
-    prop.display = prop.scene.find("display")
-  end
-
   def mouse_clicked(e)
-    puts "clicked"
     if production.waiting_for_move
-      production.client.puts(id.split('_')[1])  # depends on the cell id
+      production.client.puts(id.split('_')[1])
       production.waiting_for_move = false
     end
+  end
+
+  def position
+    id.split('_')[1]
   end
 
   def mark(marker)
     self.text = marker
   end
-    
-    #s = TCPSocket.new 'localhost', 2000
-    #s.puts "clicked: #{ id }"
-    #response = s.gets
-    #    raise "error" unless response =~ "ok"
-    #display.text += response
-
-
-  def send_message(msg)
-#    raise "error" unless response =~ "ok"
-    display.text += response
-  end
-
   
 end
