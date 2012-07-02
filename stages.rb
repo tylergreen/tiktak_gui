@@ -11,7 +11,14 @@
 
 stage "default" do
   default_scene "default_scene"
-  title "Limelight"
+  title "TikTak Limelight"
   location [200, 25]
   size [800, 800]
 end
+
+# stage "options" do
+#   default_scene "options"
+#   title "TikTak Options"
+#   location [200, 25]
+#   size [800, 800]
+# end

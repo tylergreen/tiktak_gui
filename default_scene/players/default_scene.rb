@@ -3,6 +3,11 @@ require 'socket'
 module DefaultScene
 
   def listen
+    production.backend_process = Thread.new do
+      %x[cd /Users/jorge/cs/ruby/tiktak/
+ /Users/jorge/.rvm/gems/ruby-1.9.3-p125@global/bin/rake gui ] 
+    end
+
     Thread.new do
       display = find("display")
       loop do
@@ -48,7 +53,7 @@ module DefaultScene
   end
 
   def scene_opened(e)
-    production.listener = listen
+    production.listener = scene.listen
   end
   
 end

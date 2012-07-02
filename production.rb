@@ -34,10 +34,6 @@ module Production
     @client = nil
     @listener = nil
     @waiting_for_move = false
-    @backend_process = Thread.new do
-      %x[cd /Users/jorge/cs/ruby/tiktak/
- /Users/jorge/.rvm/gems/ruby-1.9.3-p125@global/bin/rake gui ] 
-    end
   end
 #
 #  # Hook #3.  Called when the production, and all the scenes, have fully opened.
