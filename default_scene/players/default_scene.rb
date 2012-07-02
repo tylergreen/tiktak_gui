@@ -3,7 +3,7 @@ require 'socket'
 module DefaultScene
 
   def listen
-    production.listener = Thread.new do
+    Thread.new do
       display = find("display")
       loop do
         display.text = "waiting for message"
@@ -48,8 +48,7 @@ module DefaultScene
   end
 
   def scene_opened(e)
-#    production.listener = listen
-    listen
+    production.listener = listen
   end
   
 end
