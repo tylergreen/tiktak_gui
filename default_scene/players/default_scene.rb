@@ -5,8 +5,10 @@ module DefaultScene
   def listen
     display = find("display")
     loop do
+
       display.text = "waiting for message"
       client = production.server.accept
+      production.client = client
       message = client.gets
       begin
         request = JSON.parse(message)
@@ -14,16 +16,12 @@ module DefaultScene
         puts "could not parse message #{message}"
         next
       end
+      
       case request['command']
       when 'get_move'
         display.text = "waiting for input"
         # start listening for next click
-        production.last_click = nil
         production.waiting_for_move = true
-        while production.last_click.nil?
-          sleep(1)
-        end
-        client.puts production.last_click
       when 'show_new_board'
         display.text = "request to update board"
         display_new_board(request['board']) # contract with tiktak

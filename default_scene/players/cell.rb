@@ -8,8 +8,9 @@ module Cell
   end
 
   def mouse_clicked(e)
+    puts "clicked"
     if production.waiting_for_move
-      production.last_click = id.split('_')[1] # depends on the cell id
+      production.client.puts(id.split('_')[1])  # depends on the cell id
       production.waiting_for_move = false
     end
   end
