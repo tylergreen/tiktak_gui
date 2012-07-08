@@ -27,5 +27,20 @@ player2_select {
   player2_hard :players => "radio_button", :group => "player2", :id => "player2_hard", :on_button_pushed => 'production.player2 = :hard_ai' 
   player2_hard_label :text => "Hard AI"
 }
+
+board_size {
+  label :text => "3x3"
+  board_3x3 :players => "radio_button", :group => "board_sizes", :id => "3"
+  label :text => "4x4"
+  board_4x4 :players => "radio_button", :group => "board_sizes", :id => "4"
+}
+
+block_rule {
+  label :text => "normal rules"
+  normal_rules :players => "radio_button", :group => "board_size", :id => "normal_rules"
+  label :text => "2x2 block win rule"
+  block_win_rule :players => "radio_button", :group => "board_size", :id => "block_win_rule"
+}
+
   
 start_game_button :text => "start game"
