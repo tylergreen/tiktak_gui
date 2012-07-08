@@ -1,8 +1,7 @@
 module NewGameButton
 
   def mouse_clicked(e)
-    production.listener.kill
-    production.backend_process.kill
+    production.game_thread.kill
     scene.load('options')
   end
 

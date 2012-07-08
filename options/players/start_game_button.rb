@@ -1,12 +1,24 @@
 module StartGameButton
+
+  # use the option class here?
+  def select_player(player_n)
+    player = ['human', 'weak', 'medium', 'hard' ].find do |player_type|
+      scene.find(player_n + '_' + player_type).selected?
+    end
+
+    case player
+    when 'human' then Human
+    when 'weak' then RandomAI
+    when 'medium' then MediumAI
+    when 'hard' then MinimaxAI
+    end
+  end
+    
   def mouse_clicked(e)
-    player1 = ['human', 'weak', 'medium', 'hard' ].find do |player|
-      scene.find('player1_' + player).selected?
-    end
-    player2 = ['human', 'weak', 'medium', 'hard' ].find do |player|
-      scene.find('player2_' + player).selected?
-    end
-    production.game_engine = Game.new(3, LimelightPlayer, LimelightPlayer, false, CL_Display.new)
+    production.player1 = select_player('player1').new(:x)
+    production.player2 = select_player('player2').new(:o)
+
+    production.game_engine = Game.new(3)
     scene.load('default_scene')    
   end
 end

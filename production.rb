@@ -25,7 +25,7 @@ module Production
 #
 #  # Hook #2.  Called after internal gems have been loaded and stages have been instantiated, yet before
 #  # any scenes have been opened.
-  attr_accessor :game_engine, :next_move, :player1, :player2, :waiting_for_move
+  attr_accessor :game_engine, :next_move, :player1, :player2, :waiting_for_move, :game_thread
 
   def production_loaded
     @waiting_for_move = false

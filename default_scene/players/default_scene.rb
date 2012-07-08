@@ -10,25 +10,35 @@ module DefaultScene
   end
 
   def scene_opened(e)
-    game = Game.new(3)
-    player1 = Human.new(:x)
-    player2 = Human.new(:o)
-    game.start
+    production.game_thread = Thread.new do
+      game = production.game_engine
+      game.start
+      display = find("display")
+    
+      player1 = production.player1
+      player2 = production.player2
 
-    turns = [[:x, @player1], [:o, @player2]].cycle.take(game.board.size)
-    show(game.board)
-    result = turns.find( lambda{[ "Tie Game!"]} ) do |mark, player|
-      production.waiting_for_move = true
-      while production.waiting_for_move
-        sleep(0.1)
-      end
-      move = production.next_move
-      game.make_move(mark, move)
+      turns = [[:x, player1], [:o, player2]].cycle.take(game.board.size)
       show(game.board)
-      game.board.winner?
-    end.first
+      result = turns.find( lambda{[ "Tie Game!"]} ) do |mark, player|
+        if player.ai?
+          display.text = "waiting for player #{mark} to move"
+          move = player.get_move(game.board)
+        else
+          display.text = "waiting for player #{mark} to click"
+          production.waiting_for_move = true
+          while production.waiting_for_move
+            sleep(0.1)
+          end
+          move = production.next_move
+        end
+        game.make_move(mark, move)
+        show(game.board)
+        game.board.winner?
+      end.first
 
-    find("display").text = result
+      display.text = result
+    end
   end
   
 end
