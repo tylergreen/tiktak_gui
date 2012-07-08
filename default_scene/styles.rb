@@ -30,8 +30,6 @@ board {
 }
 
 cell {
-  width "33%"
-  height "33%"
   background_color :blue
   vertical_alignment :center
   horizontal_alignment :center

@@ -28,6 +28,9 @@ module StartGameButton
     production.game_engine = Game.new(selected_board_size, scene.find('block_win_rule').selected?)
     puts "size: #{ selected_board_size} "
     puts "block rule: #{scene.find('block_win_rule').selected?}"
-    scene.load('default_scene')    
+
+    production.board_size = selected_board_size
+    scene.load('default_scene')
+
   end
 end

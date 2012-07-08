@@ -9,9 +9,7 @@ message_bar :text => "message bar"
 
 display :id => "display", :text => "click a cell"
 
-board {
-  (0...9).each { |pos| cell :id => "cell_#{pos}", :text => "" }
-}
+board :id => "board"
 
 player_x {
   x_name :text => "Player X"

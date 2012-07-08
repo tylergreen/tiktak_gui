@@ -11,6 +11,10 @@ module DefaultScene
 
   def scene_opened(e)
     production.game_thread = Thread.new do
+      find("board").build(:board_size => production.board_size.to_i) do
+        (0...@board_size ** 2).each { |pos| cell :id => "cell_#{pos}", :text => "", :width => "#{100 / @board_size}%", :height => "#{100 / @board_size}%" }
+      end
+      
       game = production.game_engine
       game.start
       display = find("display")
