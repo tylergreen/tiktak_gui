@@ -20,22 +20,17 @@ module Production
 #  # Hook #1.  Called when the production is newly created, before any loading has been done.
 #  # This is a good place to require needed files and instantiate objects in the business layer.
   def production_opening
-    require 'rubygems'
-    require 'json'
+    require 'tiktak'
   end
 #
 #  # Hook #2.  Called after internal gems have been loaded and stages have been instantiated, yet before
 #  # any scenes have been opened.
-  require 'socket'
-  attr_accessor :server, :client, :backend_process, :waiting_for_move, :listener, :player1, :player2
+  attr_accessor :game_engine, :next_move, :player1, :player2, :waiting_for_move
 
   def production_loaded
-    @server = TCPServer.new 'localhost', 9010
-    @client = nil
-    @listener = nil
     @waiting_for_move = false
-    @player1 = :human
-    @player2 = :human
+    # @player1 = :human
+    # @player2 = :human
   end
 #
 #  # Hook #3.  Called when the production, and all the scenes, have fully opened.

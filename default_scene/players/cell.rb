@@ -2,17 +2,21 @@ module Cell
 
   def mouse_clicked(e)
     if production.waiting_for_move
-      production.client.puts(id.split('_')[1])
+      production.next_move = position
       production.waiting_for_move = false
     end
   end
 
   def position
-    id.split('_')[1]
+    id.split('_')[1].to_i
   end
 
   def mark(marker)
-    self.text = marker
+    if marker == :empty
+      self.text == ''
+    else
+      self.text = marker
+    end
   end
   
 end
