@@ -9,6 +9,14 @@ module DefaultScene
     end
   end
 
+  def get_ui_move(mark)
+    production.waiting_for_move = true
+    while production.waiting_for_move
+      sleep(0.1)
+    end
+    production.next_move
+  end
+
   def scene_opened(e)
     production.game_thread = Thread.new do
       find("board").build(:board_size => production.board_size.to_i) do
@@ -29,19 +37,16 @@ module DefaultScene
           display.text = "waiting for player #{mark} to move"
           move = player.get_move(game.board)
         else
-          display.text = "waiting for player #{mark} to click"
-          production.waiting_for_move = true
-          while production.waiting_for_move
-            sleep(0.1)
-          end
-          move = production.next_move
+          begin
+            move = get_ui_move(mark)
+          end until game.board.legal_move?(move)
         end
         game.make_move(mark, move)
         show(game.board)
         game.board.winner?
       end.first
 
-      display.text = result
+      display.text = "game over, winner: #{result}"
     end
   end
   
