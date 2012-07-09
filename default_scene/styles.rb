@@ -90,11 +90,14 @@ display {
 new_game_button {
   height 75
   width 200
-  background_color :light_green
   rounded_corner_radius 10
   horizontal_alignment :center
   vertical_alignment :center
   margin 10
   font_size 20
+  background_color :light_green
+  secondary_background_color :white
+  gradient :on
+
 }
 

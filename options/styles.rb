@@ -42,8 +42,10 @@ start_game_button {
   font_size 20
   width 100
   height 50
-  background_color :light_green
   rounded_corner_radius 15
   horizontal_alignment :center
   vertical_alignment :center
+  background_color :light_green
+  secondary_background_color :white
+  gradient :on
 }
