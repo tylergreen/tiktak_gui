@@ -23,18 +23,18 @@ message_bar {
 board {
   width "60%"
   height "60%"
-  background_color :green
+  background_color :gray
   vertical_alignment :center
   horizontal_alignment :center
 
 }
 
 cell {
-  background_color :blue
+  background_color :light_gray
   vertical_alignment :center
   horizontal_alignment :center
-  margin 5
-  text_color :white
+  margin 2
+  text_color :black
   font_size 100
 }
 
@@ -88,9 +88,13 @@ display {
 }
 
 new_game_button {
-  height 50
-  width 50
-  background_color :red
+  height 75
+  width 200
+  background_color :light_green
   rounded_corner_radius 10
+  horizontal_alignment :center
+  vertical_alignment :center
+  margin 10
+  font_size 20
 }
 

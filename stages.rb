@@ -18,7 +18,7 @@
 
 stage "options" do
   default_scene "options"
-  title "TikTak Options"
+  title "Tic-Tac-Toe Options"
   location [200, 25]
-  size [800, 800]
+  size [700, 700]
 end

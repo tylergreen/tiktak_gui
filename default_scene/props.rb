@@ -5,21 +5,18 @@
 
 # root :text => "This is the Default Scene scene."
 
-message_bar :text => "message bar"
-
-display :id => "display", :text => "click a cell"
+display :id => "display", :text => "Welcome to Tic Tac Toe!"
 
 board :id => "board"
 
 player_x {
-  x_name :text => "Player X"
-  x_wins :text => "wins: "
+  # x_name :text => "Player X"
+  # x_wins :text => "wins: "
 } 
 
-
 player_o {
-  o_name :text => "Player O"
-  o_wins :text => "wins: "
+  # o_name :text => "Player O"
+  # o_wins :text => "wins: "
 }
 
 ties_counter
