@@ -30,9 +30,8 @@ module DefaultScene
       player1 = production.player1
       player2 = production.player2
 
-      turns = [[:x, player1], [:o, player2]].cycle.take(game.board.size)
       show(game.board)
-      result = turns.find( lambda{[ "Tie Game!"]} ) do |mark, player|
+      result = game.turns(player1, player2).find( lambda{[ "Tie Game!"]} ) do |mark, player|
         if player.ai?
           display.text = "waiting for player #{mark} to move"
           move = player.get_move(game.board)
