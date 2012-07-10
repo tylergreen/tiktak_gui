@@ -1,8 +1,5 @@
-require 'socket'
-
 module DefaultScene
 
-  # takes in array reprentation of board
   def show(board)
     board.to_a.each_with_index do |marker, pos|
       find("cell_#{pos}").mark(marker)
@@ -17,12 +14,15 @@ module DefaultScene
     production.next_move
   end
 
+  def build_board
+    find("board").build(:board_size => production.board_size.to_i) do
+      (0...@board_size ** 2).each { |pos| cell :id => "cell_#{pos}", :text => "", :width => "#{100 / @board_size}%", :height => "#{100 / @board_size}%" }
+    end
+  end
+
   def scene_opened(e)
     production.game_thread = Thread.new do
-      find("board").build(:board_size => production.board_size.to_i) do
-        (0...@board_size ** 2).each { |pos| cell :id => "cell_#{pos}", :text => "", :width => "#{100 / @board_size}%", :height => "#{100 / @board_size}%" }
-      end
-      
+      build_board
       game = production.game_engine
       game.start
       display = find("display")
