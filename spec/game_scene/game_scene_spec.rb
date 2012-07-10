@@ -10,10 +10,10 @@ describe "Default Scene" do
   end
 
   it "can show the board" do
-    show(Game.new(3).board)
     (0...9).each do |i|
       scene.find("cell_#{i}").text.should == ''
     end
   end
+
 
 end

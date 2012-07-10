@@ -1,4 +1,4 @@
-module DefaultScene
+module GameScene
 
   def show(board)
     board.to_a.each_with_index do |marker, pos|
