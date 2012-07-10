@@ -1,0 +1,7 @@
+How to run tests:
+$ jruby -S spec spec]
+
+
+How to play:
+$ cd ..  # important! need to be in parent directory
+$ limelight open ttt_gui
