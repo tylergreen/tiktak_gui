@@ -26,6 +26,6 @@ module StartGameButton
     production.player2 = select_player('player2').new(:o)
     production.game_engine = Game.new(selected_board_size, scene.find('block_win_rule').selected?)
     production.board_size = selected_board_size
-    scene.load('default_scene')
+    scene.load('game_scene')
   end
 end

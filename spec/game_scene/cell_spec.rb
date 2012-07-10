@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../spec_helper")
 
 describe "Cells" do
 
-  uses_limelight :scene => "default_scene", :hidden => true
+  uses_limelight :scene => "game_scene", :hidden => true
 
   before do
     production.board_size = 3
